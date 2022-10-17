@@ -1,0 +1,137 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid $primary;
+  border-radius: 1rem;
+  padding: #{$gutter * 2 + "rem"};
+  background-color: $secondary;
+
+  &Image {
+    position: relative;
+    border: 1px solid $primary;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all ease $duration;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: $small-shadow;
+    }
+
+    @include max {
+      width: 100%;
+    }
+
+    @include min {
+      width: 30rem;
+      margin-right: #{$gutter * 4 + "rem"};
+    }
+  }
+
+  &Header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: #{$gutter * 2 + "rem"};
+
+    &Item {
+      @include min {
+        width: auto;
+        &:not(:last-child) {
+          margin-right: #{$gutter * 2 + "rem"};
+          font-size: 1.3rem;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  &Footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: #{$gutter * 2 + "rem"};
+
+    &Button {
+      display: flex;
+      align-items: center;
+      @include button("secondary");
+
+      span {
+        margin-right: #{$gutter + "rem"};
+      }
+    }
+  }
+
+  &Content {
+    @include max {
+      width: 100%;
+    }
+
+    @include min {
+      flex: 1;
+    }
+  }
+
+  &Title {
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 1.2;
+    padding-bottom: #{$gutter - 0.5 + "rem"};
+    background-image: linear-gradient(to right, $primary 0%, $primary 100%);
+    background-size: 0% 5%;
+    background-repeat: no-repeat;
+    background-position: left 80%;
+
+    &:hover {
+      color: $primary;
+      background-size: 100% 5%;
+    }
+  }
+
+  &Description {
+    display: block;
+    margin-top: #{$gutter * 2 + "rem"};
+    font-size: 1.7rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  &Badge {
+    &List {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    display: block;
+    border: 1px solid $primary;
+    background-color: #ffffff;
+    font-size: 1.3rem;
+    border-radius: 3rem;
+    padding: #{$gutter - 0.8 + "rem"} #{$gutter + 0.5 + "rem"} #{$gutter - 0.8 + "rem"} #{$gutter * 3 + "rem"};
+    position: relative;
+    font-weight: 300;
+
+    &:before {
+      content: "";
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 100%;
+      background-color: $secondary;
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+    }
+
+    &:not(:last-child) {
+      margin-right: #{$gutter * 2 + "rem"};
+    }
+  }
+}

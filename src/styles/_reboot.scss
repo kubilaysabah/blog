@@ -1,0 +1,54 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    font-family: $font;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1rem;
+    margin: 0;
+    background-color: $body;
+    background-image: url("/background-decoration.svg"), url("/background-decoration.svg");
+    background-position: left 80px top -70px, right 80px top -70px;
+    background-repeat: repeat-y;
+}
+
+ul, ol, dl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin: 0;
+  }
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $text;
+    transition: all ease $duration;
+
+    &:hover {
+        color: $text-hover;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+input {
+    &:not([type="radio"], [type="checkbox"]) {
+        width: 100%;
+    }
+}
+

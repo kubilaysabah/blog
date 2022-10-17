@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.item {
+  margin-right: #{$gutter + "rem"};
+}
+
+.link {
+  display: block;
+}

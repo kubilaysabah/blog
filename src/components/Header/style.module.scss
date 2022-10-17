@@ -1,0 +1,44 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.header {
+    border: 1px solid $primary;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @include min {
+        padding: #{$gutter * 2 + "rem"} #{$gutter * 6 + "rem"};
+        margin: #{$gutter * 6 + "rem"} 0;
+        border-radius: 10rem;
+    }
+}
+
+.logo {
+    width: auto;
+}
+
+.menu {
+    flex: 1;
+}
+
+.search {
+    width: auto;
+}
+
+.signIn {
+    @include max {
+        display: none;
+    }
+
+    &Button {
+        @include button("primary");
+    }
+}
+
+.socials {
+    @include min {
+        margin-left: #{$gutter * 2 + "rem"};
+    }
+}

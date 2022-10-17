@@ -1,0 +1,59 @@
+@import "./variables";
+
+@mixin max($breakpoint: $lg) {
+  @media (max-width: #{$breakpoint - 0.1 + "rem"}) {
+    @content;
+  }
+}
+
+@mixin min($breakpoint: $lg) {
+  @media (min-width: #{$breakpoint + "rem"}) {
+    @content;
+  }
+}
+
+@mixin button($color) {
+  padding: #{$gutter - 0.5 + "rem"} #{$gutter * 2.5 + "rem"};
+  font-weight: 700;
+  border-radius: 2.5rem;
+  font-size: 1.5rem;
+
+  @if ($color == "primary") {
+    background-color: $primary;
+    border: 1px solid $primary;
+    color: #ffffff;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: $small-shadow;
+      background-color: #ffffff;
+      color: $primary;
+    }
+  }
+
+  @else if ($color == "secondary") {
+    box-shadow: $small-shadow;
+    background-color: #ffffff;
+    border: 1px solid $primary;
+    color: $primary;
+    transform: translate(-2px, -2px);
+
+    &:hover {
+      color: $primary;
+      box-shadow: none;
+      transform: translate(0);
+    }
+  }
+}
+
+@mixin img-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}

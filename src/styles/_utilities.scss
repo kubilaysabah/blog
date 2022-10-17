@@ -1,0 +1,13 @@
+.container {
+  padding-left: #{$gutter + "rem"};
+  padding-right: #{$gutter + "rem"};
+  @include min {
+    max-width: #{$lg + "rem"};
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.card {
+  background-color: $secondary;
+}

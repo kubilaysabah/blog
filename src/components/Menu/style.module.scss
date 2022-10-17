@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.item {
+    @include max {
+        width: 100%;
+    }
+
+    @include min {
+        width: auto;
+    }
+}
+
+.link {
+    display: block;
+    font-size: 1.5rem;
+    padding: #{$gutter + "rem"};
+
+    &.active {
+        color: $text-hover;
+    }
+}

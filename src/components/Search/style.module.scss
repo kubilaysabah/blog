@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+
+.button {
+    border: none;
+    background-color: transparent;
+    color: $primary;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 #{$gutter * 2 + "rem"};
+
+    &:hover {
+        color: $text-hover;
+    }
+}
