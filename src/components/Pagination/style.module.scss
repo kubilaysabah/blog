@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+
+.paginationList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationItem {
+ padding: #{$gutter - 0.5 + "rem"};
+}
+
+.paginationButton {
+  border: 1px solid $primary;
+  transition: all ease $duration;
+  font-size: 1.5rem;
+  padding: #{$gutter - 0.5 + "rem"} #{$gutter + "rem"};
+
+  &:not(:disabled) {
+    cursor: pointer;
+
+    &:hover {
+      transform: translate(-0.2rem, -0.2rem);
+      box-shadow: $small-shadow;
+    }
+  }
+}
+
+.paginationButtonActive {
+  background: #ff4c60;
+  color: #ffffff;
+}

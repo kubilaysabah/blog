@@ -1,12 +1,12 @@
 import React from 'react'
 
-export const DOTS = '...'
+const DOTS = '...'
 
 type UsePagination = {
 	totalCount: number
-	pageSize: number
-	siblingCount: number
-	currentPage: number
+	pageSize?: number
+	siblingCount?: number
+	currentPage?: number
 }
 
 const range = (start: number, end: number): number[] => {
@@ -18,9 +18,9 @@ type ReturnType = (string|number)[] | undefined
 
 const usePagination = ({
 	totalCount,
-	pageSize,
+	pageSize = 6,
 	siblingCount = 1,
-	currentPage
+	currentPage = 1
 }: UsePagination): ReturnType => {
 	return React.useMemo(() => {
 		const totalPageCount = Math.ceil(totalCount / pageSize)

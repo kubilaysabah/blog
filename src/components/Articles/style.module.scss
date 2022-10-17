@@ -10,6 +10,10 @@
   padding: #{$gutter * 2 + "rem"};
   background-color: $secondary;
 
+  &:not(:last-child) {
+    margin-bottom: #{$gutter * 3 + "rem"};
+  }
+
   &Image {
     position: relative;
     border: 1px solid $primary;
@@ -53,6 +57,7 @@
   &Footer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     margin-top: #{$gutter * 2 + "rem"};
 
@@ -132,6 +137,34 @@
 
     &:not(:last-child) {
       margin-right: #{$gutter * 2 + "rem"};
+    }
+  }
+
+  &Avatar {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: $primary;
+
+    &Image {
+      width: 5rem;
+      height: 5rem;
+      margin-right: #{$gutter + "rem"};
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 100%;
+      border: 1px solid $primary;
+      transition: all ease $duration;
+    }
+
+    &:hover {
+      color: $primary;
+
+      > *:first-child {
+        box-shadow: $small-shadow;
+        transform: translate(-2px, -2px);
+      }
     }
   }
 }

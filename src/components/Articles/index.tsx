@@ -5,9 +5,12 @@ import Style from './style.module.scss'
 import slugify from 'slugify'
 import moment from 'moment'
 import { BsArrowRight } from 'react-icons/bs'
+import {Article} from '@/types'
+import { Pagination } from '@/components'
 
 const Articles: React.FC = (): React.ReactElement => {
 	const { data } = useData()
+	const [page, setPage] = React.useState<number>(1)
 
 	const URL = (author: string, article: string): string => {
 		const config = {
@@ -17,9 +20,16 @@ const Articles: React.FC = (): React.ReactElement => {
 		return `/${slugify(author, config)}/${slugify(article, config)}`
 	}
 
+	const pages = (): Article[] => {
+		const pageLimit = 6
+		const firstPageIndex = (page - 1) * pageLimit
+		const lastPageIndex = firstPageIndex + pageLimit
+		return data.articles.slice(firstPageIndex, lastPageIndex)
+	}
+
 	return (
 		<article>
-			{data.articles.map((article, index) => (
+			{pages().map((article, index) => (
 				<div key={index} className={Style.card}>
 					<div className={Style.cardImage}>
 						<Link href={URL(article.author.name, article.name)}>
@@ -64,12 +74,25 @@ const Articles: React.FC = (): React.ReactElement => {
 								</Link>
 							</div>
 							<div>
-
+								<Link passHref href={`/${slugify(article.author.name, {
+									lower: true
+								})}`}>
+									<a className={Style.cardAvatar}>
+										<div className={Style.cardAvatarImage} style={{
+											backgroundImage: `url(${article.author.image})`
+										}}>
+										</div>
+										<div>
+											{article.author.name}
+										</div>
+									</a>
+								</Link>
 							</div>
 						</footer>
 					</div>
 				</div>
 			))}
+			<Pagination page={page} setPage={setPage} totalCount={data.articles.length} />
 		</article>
 	)
 }
