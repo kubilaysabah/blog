@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useData } from '@/state/Data'
 import Style from './style.module.scss'
-import slugify from 'slugify'
+import { Routes } from '@/helpers'
 import moment from 'moment'
 import { BsArrowRight } from 'react-icons/bs'
 import {Article} from '@/types'
@@ -11,14 +11,6 @@ import { Pagination } from '@/components'
 const Articles: React.FC = (): React.ReactElement => {
 	const { data } = useData()
 	const [page, setPage] = React.useState<number>(1)
-
-	const URL = (author: string, article: string): string => {
-		const config = {
-			lower: true
-		}
-
-		return `/${slugify(author, config)}/${slugify(article, config)}`
-	}
 
 	const pages = (): Article[] => {
 		const pageLimit = 6
@@ -32,7 +24,7 @@ const Articles: React.FC = (): React.ReactElement => {
 			{pages().map((article, index) => (
 				<div key={index} className={Style.card}>
 					<div className={Style.cardImage}>
-						<Link href={URL(article.author.name, article.name)}>
+						<Link href={Routes.Pages.Article(article.name)}>
 							<a>
 								<img src={article.image} alt={article.name} />
 							</a>
@@ -43,7 +35,7 @@ const Articles: React.FC = (): React.ReactElement => {
 							{article.categories.length > 0 && (
 								<div className={Style.cardHeaderItem}>
 									<div className={Style.cardBadgeList}>
-										{article.categories.map((category, index) => (
+										{article.categories.slice(0, 2).map((category, index) => (
 											<span key={index} className={Style.cardBadge}>{category}</span>
 										))}
 									</div>
@@ -57,7 +49,7 @@ const Articles: React.FC = (): React.ReactElement => {
 							</div>
 						</header>
 						<main>
-							<Link href={URL(article.author.name, article.name)} passHref>
+							<Link href={Routes.Pages.Article(article.name)} passHref>
 								<a className={Style.cardTitle}>
 									{article.name}
 								</a>
@@ -66,7 +58,7 @@ const Articles: React.FC = (): React.ReactElement => {
 						</main>
 						<footer className={Style.cardFooter}>
 							<div>
-								<Link href={URL(article.author.name, article.name)} passHref>
+								<Link href={Routes.Pages.Article(article.name)} passHref>
 									<a className={Style.cardFooterButton}>
 										<span>Continue Reading</span>
 										<BsArrowRight />
@@ -74,9 +66,7 @@ const Articles: React.FC = (): React.ReactElement => {
 								</Link>
 							</div>
 							<div>
-								<Link passHref href={`/${slugify(article.author.name, {
-									lower: true
-								})}`}>
+								<Link passHref href={Routes.Pages.Author(article.author.name)}>
 									<a className={Style.cardAvatar}>
 										<div className={Style.cardAvatarImage} style={{
 											backgroundImage: `url(${article.author.image})`
