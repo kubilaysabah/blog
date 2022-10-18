@@ -1,1 +1,5 @@
+export { default as ArticlePage } from './Article'
+export { default as AuthorPage } from './Author'
+export { default as CategoryPage } from './Category'
 export { default as HomePage } from './Home'
+export { default as SignInPage } from './SignIn'
