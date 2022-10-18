@@ -1,10 +1,17 @@
+@import '../styles/function';
+
 .container {
   padding-left: #{$gutter + "rem"};
   padding-right: #{$gutter + "rem"};
-  @include min {
-    max-width: #{$lg + "rem"};
+
+  @include min($lg + ($gutter * 2)) {
+    max-width: #{remToPx($lg) + (remToPx($gutter) * 2) + "px"};
     margin-left: auto;
     margin-right: auto;
+  }
+
+  @include min($xl + ($gutter * 2)) {
+    max-width: #{remToPx($xl) + (remToPx($gutter) * 2) + "px"};
   }
 }
 

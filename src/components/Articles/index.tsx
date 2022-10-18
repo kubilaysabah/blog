@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { useData } from '@/state/Data'
+import ArticlesProps from './props'
 import Style from './style.module.scss'
 import { Routes } from '@/helpers'
 import moment from 'moment'
@@ -8,15 +8,16 @@ import { BsArrowRight } from 'react-icons/bs'
 import {Article} from '@/types'
 import { Pagination } from '@/components'
 
-const Articles: React.FC = (): React.ReactElement => {
-	const { data } = useData()
+const Articles: React.FC<ArticlesProps> = ({
+	data = []
+}: ArticlesProps): React.ReactElement => {
 	const [page, setPage] = React.useState<number>(1)
 
 	const pages = (): Article[] => {
 		const pageLimit = 6
 		const firstPageIndex = (page - 1) * pageLimit
 		const lastPageIndex = firstPageIndex + pageLimit
-		return data.articles.slice(firstPageIndex, lastPageIndex)
+		return data.slice(firstPageIndex, lastPageIndex)
 	}
 
 	return (
@@ -82,7 +83,7 @@ const Articles: React.FC = (): React.ReactElement => {
 					</div>
 				</div>
 			))}
-			<Pagination page={page} setPage={setPage} totalCount={data.articles.length} />
+			<Pagination page={page} setPage={setPage} totalCount={data.length} />
 		</article>
 	)
 }

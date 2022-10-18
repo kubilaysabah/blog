@@ -1,0 +1,26 @@
+@import '../../../styles/mixin';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content {
+  @include max {
+    width: 100%;
+  }
+
+  @include min {
+    flex: 1;
+  }
+}
+
+.aside {
+  @include max {
+    width: 100%;
+  }
+
+  @include min {
+    width: calc(100% / 5);
+  }
+}
