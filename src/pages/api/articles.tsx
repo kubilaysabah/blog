@@ -42,7 +42,7 @@ const Mock = {
 	updatedAt: new Date().toString(),
 	author: {
 		name: 'Jonathan Doe',
-		image: '/author.webp'
+		image: '/@.webp'
 	}
 }
 

@@ -7,7 +7,7 @@ const Routes = {
 		Article: (article: string) => `/article/${slugify(article, {
 			lower: true,
 		})}`,
-		Author: (author: string) => `/author/${slugify(author, {
+		Author: (author: string) => `/@${slugify(author, {
 			lower: true,
 		})}`
 	},
